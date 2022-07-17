@@ -5,7 +5,7 @@
     
     $ source env/bin/activate(linux)
 
-    $ .\env\Script\activate(windows)
+    $ .\env\Scripts\activate(windows)
 
     $ pip install -r requirements.txt
     
