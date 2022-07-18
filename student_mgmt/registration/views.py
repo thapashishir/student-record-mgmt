@@ -12,7 +12,6 @@ class StudentListView(View):
         }
         return render(request, "registration/student_list.html", context)
 
-
 class StudentAddView(View):
     def get(self, request, *args, **kwargs):
         return render(request, "registration/student_add.html")
