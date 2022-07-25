@@ -7,9 +7,6 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     {% load static %}  
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">  
-    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}">
-
-    </script> 
 </head>
 <body>
 
@@ -48,6 +45,22 @@
           <li class="nav-item ml-4">
             <a class="nav-link text-white" href="/student/list">Students</a>
           </li>
+          {% if request.session.current_user.role == "admin" %}
+          <li class="nav-item ml-4">
+            <a class="nav-link text-white" href="#">User Management</a>
+          </li>
+          {% endif %}
+          
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="text-white">{{request.session.current_user.user_name}}</span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="/logout">Logout</a></li>
+              
+            </ul>
+          </li>
         </ul>
       </nav>
 
@@ -68,6 +81,8 @@
       <a class="text-white">Developed by Shishir Thapa | 2022</a>
     </div>
   </footer>
+  <script src="{% static 'bootstrap/js/bootstrap.min.js' %}">
 
+  </script> 
 </body>
 </html>

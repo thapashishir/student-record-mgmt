@@ -1,11 +1,12 @@
-import re
 from django.shortcuts import render, redirect
 from django.views.generic import View
 from . models import Student
+from student_mgmt import auth_required
 
 # Create your views here.
 class StudentListView(View):
-    def get(self, request, *args, **kwargs):
+    @auth_required
+    def get(self, request):
         students=Student.objects.all()
         context = {
             "students" : students
@@ -13,9 +14,11 @@ class StudentListView(View):
         return render(request, "registration/student_list.html", context)
 
 class StudentAddView(View):
+    @auth_required
     def get(self, request, *args, **kwargs):
         return render(request, "registration/student_add.html")
-    
+
+    @auth_required
     def post(self, request, *args, **kwargs):
         data = {
             "student_name": request.POST.get("student_name"),
@@ -29,6 +32,7 @@ class StudentAddView(View):
 
 
 class StudentEditView(View):
+    @auth_required
     def get(self, request, *args, **kwargs):
         url_parmeter = self.kwargs
         student_id = url_parmeter["student_id"]
@@ -38,6 +42,7 @@ class StudentEditView(View):
         }
         return render(request, "registration/student_edit.html", context)
     
+    @auth_required
     def post(self, request, *args, **kwargs):
         data = {
             "student_name": request.POST.get("student_name"),
@@ -50,6 +55,7 @@ class StudentEditView(View):
 
 
 class StudentDeleteView(View):
+    @auth_required
     def get(self, request, *args, **kwargs):
         url_parmeter = self.kwargs
         student_id = url_parmeter["student_id"]
