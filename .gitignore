@@ -3,5 +3,5 @@ __pycache__/
 env/
 venv/
 *.sqlite3
-/student_mgmt/student_db
+student_mgmt/student_db
 
