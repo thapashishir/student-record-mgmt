@@ -22,7 +22,7 @@ class UserLoginView(View):
             #setting data to django session named as current_user
             request.session["current_user"] = {
                 "user_name":  user.user_name,
-                "role": "admin"
+                "role": user.role
             }
 
             #redirect to student list if user name passoword is valid
