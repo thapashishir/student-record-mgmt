@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from .views import FileServeView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('file/<file_name>', FileServeView.as_view(),name="FileServe"),
     path('',include('registration.urls')),
     path('',include('user_mgmt.urls'))
     
